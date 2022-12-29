@@ -14,26 +14,30 @@ class HomeControl extends Controller
     //
     function index()
     {
-        return view('homeguest');
+        $data = Project::paginate(5);
+        return view('homeguest', ['list' => $data]);
     }
 
     function redFunc()
     {
+        if (Auth::user()) {
+            $typeuser = Auth::user()->usertype;
+            $svid = Auth::user()->lectid;
+            // dd($svid);
 
-        $typeuser = Auth::user()->usertype;
-        $svid = Auth::user()->lectid;
-        // dd($svid);
+            if ($typeuser == '1') {
+                $data = Project::paginate(5);
+                return view('admin.adminhome', ['list' => $data]);
+            } else if ($typeuser == '0') {
+                $data = DB::table('projects')->where('svid', $svid)->get();
+                $result = json_decode($data, true);
 
-        if ($typeuser == '1') {
-            $data = Project::paginate(5);
-            return view('admin.adminhome', ['list' => $data]);
-        } else if ($typeuser == '0') {
-            $data = DB::table('projects')->where('svid', $svid)->get();
-            $result = json_decode($data, true);
-
-            return view('home', ['list' => $result]);
+                return view('home', ['list' => $result]);
+            }
         } else {
-            return view('homeguest');
+            $data = Project::paginate(5);
+            return view('homeguest', ['list' => $data]);
         }
+
     }
 }

@@ -39,7 +39,44 @@
         align-items: center;
         flex-direction: column;">
 
-            <h1>Please Log In to Continue</h1>
+            <div class="card overflow-auto" style="height:90rem; width:90rem">
+                <div class="card-body">
+                    <h3 class="card-title">Student List<span> | view</span></h3>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Student ID</th>
+                                <th scope="col">Student Name</th>
+                                <th scope="col">Project Title</th>
+                                <th scope="col">Supervisor</th>
+                                <th scope="col">Progress</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($list as $item)
+                                <tr>
+                                    <th>{{ $item['studid'] }}</th>
+                                    <td>{{ $item['studname'] }}</td>
+                                    <td>{{ $item['title'] }}</td>
+                                    <td>{{ $item['svid'] }}</td>
+                                    <td>{{ $item['progress'] }}</td>
+                                    <td>{{ $item['status'] }}</td>
+                                </tr>
+                            @endforeach
+                            <div class="mx-auto pb-10 w-4/5">
+                                {{ $list->links('pagination::bootstrap-5') }}
+                            </div>
+
+                        </tbody>
+                    </table>
+
+                </div><!-- End Content -->
+
+
+
+            </div>
         </div>
 
     </section>

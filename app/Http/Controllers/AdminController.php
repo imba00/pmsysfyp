@@ -28,7 +28,7 @@ class AdminController extends Controller
         $project->sdate = $req->sdate;
         $project->edate = $req->edate;
         $project->progress = "Milestone 1";
-        $project->status = "NULL";
+        $project->status = "";
         $project->svid = $req->svid;
         $project->ex1 = $req->ex1;
         $project->ex2 = $req->ex2;

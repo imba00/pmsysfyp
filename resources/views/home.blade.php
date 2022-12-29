@@ -107,6 +107,9 @@
                                 </form>
                             </tr>
                         @endforeach
+                        <div class="mx-auto pb-10 w-4/5">
+                            {{ $list->links('pagination::bootstrap-5') }}
+                        </div>
 
                     </tbody>
                 </table>
