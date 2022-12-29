@@ -30,6 +30,7 @@ Route::get("/addproject", function () {
 Route::post("/regproj", [AdminController::class, ('assignproject')]);
 
 
+Route::get('/addproject', [AdminController::class, ('addprojform')]);
 Route::get('updlist/{id}', [AdminController::class, ('showstud')]);
 Route::get('dltlist/{id}', [AdminController::class, ('deletestud')]);
 Route::post("/updproj", [AdminController::class, ('updateproject')]);

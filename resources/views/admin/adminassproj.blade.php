@@ -11,6 +11,9 @@
 
 
     @include('admin.script')
+
+
+
     <script>
         $(function() {
             $("#sdate").datepicker();
@@ -23,13 +26,18 @@
 </head>
 
 <body>
+
+    <script>
+        
+    </script>
+
     @include('admin.header')
 
     @include('admin.adminsidebar')
 
     <main id="main" class="main">
 
-        
+
 
         <section class="section dashboard">
             <div class="row">
@@ -64,9 +72,18 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 form-group my-3 mt-md-0">
-                                            <label for="svid" class="form-label">Supervisor ID</label>
-                                            <input type="text" class="form-control" name="svid"
-                                                id="svid"required>
+                                            <label for="svid" class="form-label">Supervisor</label>
+                                            <select class="form-select select" id="svid"
+                                                aria-label="Default select example" name="svid">
+                                                @foreach ($lectlist as $item)
+                                                    @if ($item['lectid'] == 'l1')
+                                                    @else
+                                                        <option value="{{ $item['lectid'] }}">
+                                                            {{ $item['name'] }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="col-md-6 form-group my-3 mt-md-0">
                                             <label for="duration" class="form-label">Project Duration (month)</label>
@@ -89,13 +106,31 @@
                                     <div class="row">
                                         <div class="col-md-6 form-group my-3 mt-md-0">
                                             <label for="ex1" class="form-label">Examiner 1</label>
-                                            <input type="text" class="form-control" name="ex1"
-                                                id="ex1"required>
+                                            <select class="form-select select" id="ex1"
+                                                aria-label="Default select example" name="ex1">
+                                                @foreach ($lectlist as $item)
+                                                    @if ($item['lectid'] == 'l1')
+                                                    @else
+                                                        <option value="{{ $item['lectid'] }}">
+                                                            {{ $item['name'] }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="col-md-6 form-group my-3 mt-md-0">
                                             <label for="ex2" class="form-label">Examiner 2</label>
-                                            <input type="text" class="form-control" name="ex2"
-                                                id="ex2"required>
+                                            <select class="form-select select" id="ex2"
+                                                aria-label="Default select example" name="ex2">
+                                                @foreach ($lectlist as $item)
+                                                    @if ($item['lectid'] == 'l1')
+                                                    @else
+                                                        <option value="{{ $item['lectid'] }}">
+                                                            {{ $item['name'] }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <button class="btn btn-outline-primary" type="submit">Register</button>
@@ -112,7 +147,7 @@
         </section>
 
     </main><!-- End #main -->
-
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </body>
 
 </html>

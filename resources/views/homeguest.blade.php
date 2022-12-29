@@ -39,7 +39,7 @@
         align-items: center;
         flex-direction: column;">
 
-            <div class="card overflow-auto" style="height:90rem; width:90rem">
+            <div class="card overflow-auto" style="height:500px; width:90rem">
                 <div class="card-body">
                     <h3 class="card-title">Student List<span> | view</span></h3>
 
@@ -80,19 +80,6 @@
         </div>
 
     </section>
-
-    <main id="main">
-
-
-
-
-
-    </main><!-- End #main -->
-
-
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
 </body>
 
 </html>

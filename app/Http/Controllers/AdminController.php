@@ -9,6 +9,12 @@ use App\Models\Project;
 class AdminController extends Controller
 {
     //
+
+    function addprojform(){
+        $data = User::all();
+        return view('admin.adminassproj', ['lectlist' => $data]);
+    }
+
     function deletestud($id)
     {
         $data = Project::find($id);
@@ -63,7 +69,7 @@ class AdminController extends Controller
         $project->save();
 
         return redirect()->to('/redirect');
-        ;
+        
 
     }
     function updatestatusprogress(Request $req)

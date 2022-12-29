@@ -22,14 +22,13 @@ class HomeControl extends Controller
     {
         if (Auth::user()) {
             $typeuser = Auth::user()->usertype;
-            $svid = Auth::user()->lectid;
-            // dd($svid);
 
             if ($typeuser == '1') {
                 $data = Project::paginate(5);
                 return view('admin.adminhome', ['list' => $data]);
             } else if ($typeuser == '0') {
-                $data = DB::table('projects')->where('svid', $svid)->get();
+                // $data = DB::table('projects')->where('svid', $svid)->paginate(5);
+                $data = DB::table('projects')->where('svid', Auth::user()->lectid)->get();
                 $result = json_decode($data, true);
 
                 return view('home', ['list' => $result]);
