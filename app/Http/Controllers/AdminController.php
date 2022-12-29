@@ -10,7 +10,8 @@ class AdminController extends Controller
 {
     //
 
-    function addprojform(){
+    function addprojform()
+    {
         $data = User::all();
         return view('admin.adminassproj', ['lectlist' => $data]);
     }
@@ -47,8 +48,9 @@ class AdminController extends Controller
     function showstud($id)
     {
         $data = Project::find($id);
+        $data2 = User::all();
 
-        return view('admin/updatelist', ['disp' => $data]);
+        return view('admin/updatelist', ['disp' => $data, 'lectlist' => $data2]);
     }
 
     function updateproject(Request $req)
@@ -69,7 +71,7 @@ class AdminController extends Controller
         $project->save();
 
         return redirect()->to('/redirect');
-        
+
 
     }
     function updatestatusprogress(Request $req)

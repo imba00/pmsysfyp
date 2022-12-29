@@ -45,7 +45,7 @@
 
 
                     <h3 class="pb-3">REGISTER</h3>
-                    
+
                     <x-jet-validation-errors class="mb-4" />
 
                     <form method="POST" action="{{ route('register') }}">
@@ -73,6 +73,12 @@
                             <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                             <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password"
                                 name="password_confirmation" required autocomplete="new-password" />
+                        </div>
+
+                        <div class="mt-4">
+                            <x-jet-label for="lectid" value="{{ __('Lecturer ID') }}" />
+                            <x-jet-input id="lectid" class="block mt-1 w-full" type="text" name="lectid"
+                                required />
                         </div>
 
                         @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -127,9 +133,6 @@
     </main><!-- End #main -->
 
 
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
 </body>
 
 </html>

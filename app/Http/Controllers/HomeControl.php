@@ -25,7 +25,8 @@ class HomeControl extends Controller
 
             if ($typeuser == '1') {
                 $data = Project::paginate(5);
-                return view('admin.adminhome', ['list' => $data]);
+                $data2 = User::all();
+                return view('admin.adminhome', ['list' => $data, 'lectlist' => $data2]);
             } else if ($typeuser == '0') {
                 // $data = DB::table('projects')->where('svid', $svid)->paginate(5);
                 $data = DB::table('projects')->where('svid', Auth::user()->lectid)->get();

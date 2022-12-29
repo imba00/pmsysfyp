@@ -13,7 +13,7 @@
     @include('admin.script')
 
 
-
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
         $(function() {
             $("#sdate").datepicker();
@@ -27,9 +27,7 @@
 
 <body>
 
-    <script>
-        
-    </script>
+    <script></script>
 
     @include('admin.header')
 
@@ -147,7 +145,7 @@
         </section>
 
     </main><!-- End #main -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 </body>
 
 </html>

@@ -26,7 +26,7 @@
             <!-- Content -->
             <div class="col-12">
                 <div class="card overflow-auto">
-                    <div class="card-body">
+                    <div class="card-body" style="height:500px; width:90rem">
                         <h5 class="card-title">Student List<span>| view</span></h5>
 
                         <table class="table table-bordered">
@@ -38,6 +38,7 @@
                                     <th scope="col">Supervisor</th>
                                     <th scope="col">Progress</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Examiner</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -47,9 +48,27 @@
                                         <th>{{ $item['studid'] }}</th>
                                         <td>{{ $item['studname'] }}</td>
                                         <td>{{ $item['title'] }}</td>
-                                        <td>{{ $item['svid'] }}</td>
+                                        <td>
+                                            @foreach ($lectlist as $sv)
+                                                @if ($sv['lectid'] == $item['svid'])
+                                                    {{ $sv['name'] }}
+                                                @endif
+                                            @endforeach
+                                        </td>
                                         <td>{{ $item['progress'] }}</td>
                                         <td>{{ $item['status'] }}</td>
+                                        <td>
+                                            @foreach ($lectlist as $sv)
+                                                @if ($sv['lectid'] == $item['ex1'])
+                                                    {{ $sv['name'] }}
+                                                @endif
+                                            @endforeach,
+                                            @foreach ($lectlist as $sv)
+                                                @if ($sv['lectid'] == $item['ex2'])
+                                                    {{ $sv['name'] }}
+                                                @endif
+                                            @endforeach
+                                        </td>
                                         <td><button onClick="location.href='{{ ' updlist/' . $item['id'] }}'"
                                                 class="fa-solid fa-pen-to-square btn btn-light" title="edit data">
                                             </button>
