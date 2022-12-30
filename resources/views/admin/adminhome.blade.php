@@ -33,7 +33,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Student ID</th>
-                                    <th scope="col">Student Name</th>
+                                    {{-- <th scope="col">Student Name</th> --}}
                                     <th scope="col">Project Title</th>
                                     <th scope="col">Supervisor</th>
                                     <th scope="col">Progress</th>
@@ -46,7 +46,7 @@
                                 @foreach ($list as $item)
                                     <tr>
                                         <th>{{ $item['studid'] }}</th>
-                                        <td>{{ $item['studname'] }}</td>
+                                        {{-- <td>{{ $item['studname'] }}</td> --}}
                                         <td>{{ $item['title'] }}</td>
                                         <td>
                                             @foreach ($lectlist as $sv)
