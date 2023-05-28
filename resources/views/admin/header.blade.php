@@ -4,10 +4,10 @@
     <div class="d-flex align-items-center justify-content-between ">
         <a href="/redirect" class="logo d-flex align-items-center">
             <img src="admin/assets/img/logo.png" alt="">
-            <span class="d-none d-lg-block">FYP Manager Coordinator</span>
+            <span class="d-none d-lg-block">PMS ADMIN</span>
         </a>
     </div><!-- End Logo -->
-
+    @include('admin.admincss')
 
 
     <nav class="header-nav ms-auto">

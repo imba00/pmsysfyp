@@ -196,6 +196,15 @@ h6 {
   }
 }
 
+
+.dataTables_length select {
+  width: 70px;
+}
+
+/* .dataTables_length {
+  display: none;
+} */
+
 /* Light Backgrounds */
 .bg-primary-light {
   background-color: #cfe2ff;

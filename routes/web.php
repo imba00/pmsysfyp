@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeControl;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,22 +21,55 @@ use App\Http\Controllers\AdminController;
 // });
 
 
-Route::get("/", [homeControl::class, "index"]);
-Route::get("/redirect", [homeControl::class, "redFunc"]);
+Route::get("/", [homeControl::class, "redFunc"]);
 
-Route::get("/addproject", function () {
-    return view('admin.adminassproj');
+Route::get("/test", function () {
+    return view('testdb');
 });
 
-Route::post("/regproj", [AdminController::class, ('assignproject')]);
+Route::get("/redirect", [homeControl::class, "redFunc"]);
+
+Route::get("/studlist", [AdminController::class, "showstudent"]);
+
+Route::get('/get-studid/{phoneno}', [AdminController::class, 'getStudId']); //autofill
+
+Route::get("/registerparcel", function () {
+    return view('admin/adminregisterparcel');
+});
+
+Route::post("/regpar", [AdminController::class, ('registerparcel')]);
+
+Route::post("/updlist", [AdminController::class, ('updatepar')]);
+Route::get("/updateparform/{id}", [AdminController::class, ('updateparform')]);
+
+Route::post('parcelcollected', [AdminController::class, ('collectedparcel')]);
+Route::get('parcol/{id}', [AdminController::class, ('collectpar')]);
+
+Route::post("/updstudent", [AdminController::class, ('updatestud')]);
+Route::get("/editstudent/{id}", [AdminController::class, ('editstud')]);
+
+Route::get('dltpar/{id}', [AdminController::class, ('deletepar')]);
+Route::get('dltuser/{id}', [AdminController::class, ('deleteuser')]);
 
 
-Route::get('/addproject', [AdminController::class, ('addprojform')]);
-Route::get('updlist/{id}', [AdminController::class, ('showstud')]);
-Route::get('dltlist/{id}', [AdminController::class, ('deletestud')]);
-Route::post("/updproj", [AdminController::class, ('updateproject')]);
-Route::post("/editsv", [AdminController::class, ('updatestatusprogress')]);
+// Route::post("/verify_password", [StudentController::class, ('verifyPassword')]);
 
+Route::post('/verify-password', 'App\Http\Controllers\StudentController@verifyPassword')->name('verify_password');
+
+
+
+
+Route::middleware(['auth:sanctum', 'admin'])->group(function () {
+    // Admin-only routes
+    Route::get('/register', [AdminRegisterController::class, 'create'])->name('register');
+    Route::post('/register', [AdminRegisterController::class, 'store']);
+    // other admin-only routes...
+});
+
+
+// Route::middleware(['auth'])->get('/register', function () {
+//     return view('auth.register');
+// })->name('register');
 
 Route::middleware([
     'auth:sanctum',

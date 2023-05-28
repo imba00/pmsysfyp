@@ -5,18 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 
 use App\Models\User;
-use App\Models\Project;
+use App\Models\Parcel;
 
 class HomeControl extends Controller
 {
     //
-    function index()
-    {
-        $data = Project::paginate(5);
-        return view('homeguest', ['list' => $data]);
-    }
 
     function redFunc()
     {
@@ -24,19 +21,21 @@ class HomeControl extends Controller
             $typeuser = Auth::user()->usertype;
 
             if ($typeuser == '1') {
-                $data = Project::paginate(5);
-                $data2 = User::all();
-                return view('admin.adminhome', ['list' => $data, 'lectlist' => $data2]);
+                $apartment = Auth::user()->apartment;
+                // $data = Parcel::where('apartment', $apartment)->get();
+                $data = Parcel::all();
+                return view('admin.adminhome', ['parcellist' => $data, 'apartment' => $apartment]);
             } else if ($typeuser == '0') {
-                // $data = DB::table('projects')->where('svid', $svid)->paginate(5);
-                $data = DB::table('projects')->where('svid', Auth::user()->lectid)->get();
-                $result = json_decode($data, true);
+                $user = Auth::user();
+                $data = Parcel::where('phoneno', $user->phoneno)->get();
 
-                return view('home', ['list' => $result]);
+                return view('home', ['parcellist' => $data, 'user' => $user, 'is_pin_shown' => false, 'showpin' => 0]);
             }
         } else {
-            $data = Project::paginate(5);
-            return view('homeguest', ['list' => $data]);
+            // $data = Project::paginate(5);
+            // return view('homeguest', ['list' => $data]);
+
+            return view('auth/login');
         }
 
     }

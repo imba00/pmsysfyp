@@ -6,13 +6,25 @@
         <li class="nav-item">
             <a class="nav-link " href="/redirect">
                 <i class="bi bi-grid"></i>
-                <span>Student List</span>
+                <span>Parcel List</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="/addproject">
+            <a class="nav-link " href="/registerparcel">
                 <i class="bi bi-grid"></i>
-                <span>Assign Project</span>
+                <span>Register Parcel</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('register') }}">
+                <i class="bi bi-grid"></i>
+                <span>Register Student</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="/studlist">
+                <i class="bi bi-grid"></i>
+                <span>Student List</span>
             </a>
         </li>
 
